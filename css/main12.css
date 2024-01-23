@@ -89,25 +89,15 @@ li span {
     height: 30px;
     margin-right: 5px;
   }
-
-  #icon1 {
-    background-color: #4CAF50; /* Green */
-  }
-
-  #icon2 {
-    background-color: #2196F3; /* Blue */
-  }
-
-  #icon3 {
-    background-color: #f44336; /* Red */
-  }
 img {
     width: 20%;
     margin-top: -40px;
     filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.221));
 }
-#icon1{
+.icon{
+    display: block; 
     float: right;
+
 }
 
 @media all and (max-width: 768px) {
