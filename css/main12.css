@@ -48,7 +48,7 @@ h1 {
     font-weight: normal;
     letter-spacing: .125rem;
     font-weight: bold;
-    font-family: 'Montserrat';
+    font-family: url("https://fonts.googleapis.com/css?family=Montserrat");
 }
 
 li {
