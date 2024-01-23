@@ -107,6 +107,7 @@ img {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    font-family: url("https://fonts.googleapis.com/css?family=Montserrat");
   }
 
 @media all and (max-width: 768px) {
