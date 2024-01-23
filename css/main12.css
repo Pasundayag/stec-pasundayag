@@ -113,7 +113,7 @@ img {
 
 @media all and (max-width: 768px) {
     h1 {
-        font-size: 50px;
+        font-size: 20px;
     }
 
     li {
@@ -131,6 +131,6 @@ img {
         margin-top: -40px;
     }
     h1{
-        font-size: 60px;
+        font-size: 20px;
     }
 }
