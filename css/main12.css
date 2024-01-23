@@ -24,8 +24,8 @@
 
 @font-face {
     font-family: 'Montserrat';
-    src: url("fonts/Montserrat-Light.eot");
-    src: local("☺"), url("fonts/Montserrat-Light.woff") format("woff"), url("fonts/Montserrat-Light.ttf") format("truetype"), url("fonts/Montserrat-Light.svg") format("svg");
+    src: url("https://fonts.googleapis.com/css?family=Montserrat");
+    src: local("☺"), url("https://fonts.googleapis.com/css?family=Montserrat") format("woff"), url("fonts/Montserrat-Light.ttf") format("truetype"), url("fonts/Montserrat-Light.svg") format("svg");
     font-weight: 300;
     font-style: normal
 }
@@ -58,7 +58,7 @@ body {
     background: rgb(255, 255, 255);
     background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(210, 183, 29, 1) 57%);
     display: flex;
-    font-family: "Montserrat", serif;
+    font-family: 'Montserrat';
 }
 
 .container {
