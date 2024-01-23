@@ -58,7 +58,7 @@ body {
     background: rgb(255, 255, 255);
     background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(210, 183, 29, 1) 57%);
     display: flex;
-    font-family: 'Montserrat';
+    font-family: "Montserrat", serif;
 }
 
 .container {
@@ -72,6 +72,7 @@ h1 {
     font-weight: normal;
     letter-spacing: .125rem;
     font-weight: bold;
+    font-family: "Montserrat", serif;
 }
 
 li {
