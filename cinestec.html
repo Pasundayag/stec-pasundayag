@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Pasundayag 2024</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="HTML5 website template">
+  <meta name="keywords" content="global, template, html, sass, jquery">
+  <link rel="stylesheet" href="assets/css/index.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/15cc50757e.js" crossorigin="anonymous"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Inter, sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #0f0f0f;
+    }
+
+    .wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      position: relative;
+      width: 325px;
+      height: 450px;
+      background: #000;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    }
+
+    .poster {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .poster::before {
+      content: '';
+      position: absolute;
+      bottom: -45%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      transition: .3s;
+    }
+
+    .card:hover .poster::before {
+      bottom: 0;
+    }
+
+    .poster img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .3s;
+    }
+
+    .card:hover .poster img {
+      transform: scale(1.1);
+    }
+
+    .details {
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      height: auto;
+      padding: 1.5em 1.5em 2em;
+      background: #000a;
+      backdrop-filter: blur(16px) saturate(120%);
+      transition: .3s;
+      color: #fff;
+      z-index: 2;
+    }
+
+    .card:hover .details {
+      bottom: 0;
+    }
+
+    .details h1,
+    .details h2 {
+      font-weight: 700;
+    }
+
+    .details h1 {
+      font-size: 1.5em;
+      margin-bottom: 5px;
+    }
+
+    .details h2 {
+      font-weight: 400;
+      font-size: 1em;
+      margin-bottom: 10px;
+      opacity: .6;
+    }
+
+    .details .rating {
+      position: relative;
+      margin-bottom: 15px;
+      display: flex;
+      gap: .25em;
+    }
+
+    .details .rating i {
+      color: #e3c414;
+    }
+
+    .details .rating span {
+      margin-left: 0.25em;
+    }
+
+    .details .tags {
+      display: flex;
+      gap: .375em;
+      margin-bottom: .875em;
+      font-size: .85em;
+    }
+
+    .details .tags span {
+      padding: .35rem .65rem;
+      color: #fff;
+      border: 1.5px solid rgba(255 255 255 / 0.4);
+      border-radius: 4px;
+      border-radius: 50px;
+    }
+
+    .details .desc {
+      color: #fff;
+      opacity: .8;
+      line-height: 1.5;
+      margin-bottom: 1em;
+      font-size: 11px;
+    }
+
+    .details .cast h3 {
+      margin-bottom: .5em;
+    }
+
+    .details .cast ul {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem;
+      width: 100%;
+    }
+
+    .details .cast ul li {
+      list-style: none;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1.5px solid #fff;
+    }
+
+    .details .cast ul li img {
+      width: 100%;
+      height: 100%;
+    }
+
+    a {
+      width: 100%;
+      height: 100%;
+    }
+
+    button {
+      font-family: 'Muli', sans-serif;
+      -webkit-transition: 0.15s all ease-in-out;
+      -o-transition: 0.15s all ease-in-out;
+      transition: 0.15s all ease-in-out;
+      cursor: pointer;
+    }
+
+    .all {
+      padding: 30px 0;
+      margin: 0 auto;
+      width: 20%;
+      height: auto;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    .buttons {
+      width: 100%;
+      margin: 0 auto;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    .round-icon {
+      background: #ffffff;
+      color: #0f0f0f;
+      font-size: 16px;
+      padding: 2px 20px;
+      text-decoration: none;
+      width: 80%;
+      height: 40px;
+      padding: .35rem .65rem;
+      border: none;
+      border-radius: 4px;
+      border-radius: 50px;
+
+    }
+
+    .header--nav-toggle {
+      display: flex;
+      width: 50px;
+      height: 50px;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    hr.solid {
+      border-top: .1px solid #ffffff66;
+    }
+
+    #Search {
+      color: rgb(255, 255, 255);
+      height: 50px;
+      width: 300px;
+      border: 1px solid white;
+      background-color: #00000000;
+      margin-left: -20%;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    @media (max-width: 1180px) {
+      #Search {
+      color: rgb(255, 255, 255);
+      height: 50px;
+      width: 300px;
+      border: 1px solid white;
+      background-color: #00000000;
+      margin-left: -20%;
+      padding: 10px;
+      font-size: 16px;
+    }
+    }
+
+    .cine {
+      width: 90%;
+      margin-left: 5%;
+    }
+
+    .row {
+      --mdb-gutter-x: 0;
+    }
+
+    .sidebar {
+      font-family: Montserrat;
+      width: 28rem;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 100;
+      cursor: pointer;
+      background: rgb(64, 0, 0);
+      transition: 0.5s;
+      overflow: hidden;
+    }
+
+    .brand {
+      text-align: center;
+      display: none;
+      font-size: 1.4rem;
+      padding: 1rem 0;
+      color: #ffffff;
+    }
+
+    .brand:hover {
+      background: #5e593100;
+    }
+
+    .brand span {
+      display: none;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin-bottom: 50%;
+      font-family: Montserrat;
+    }
+
+    .nav-item {
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-item:hover {
+      background: #ffffff00;
+    }
+
+    .nav-item a {
+      position: relative;
+      white-space: nowrap;
+      display: flex;
+      gap: 1rem;
+      font-family: Montserrat;
+    }
+
+    .nav-item__icon {
+      position: relative;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-item__text {
+      position: relative;
+      display: none;
+      font-size: 1.8em;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .sidebar .brand span {
+      display: inline;
+    }
+
+    .sidebar .brand {
+      display: flex;
+      margin-left: 50px;
+    }
+
+    .sidebar .nav-item {
+      justify-content: start;
+    }
+
+    .sidebar .nav-item__text {
+      display: flex;
+      align-items: center;
+    }
+    .sidebar .nav-item-arrow{
+      display: none;
+    }
+
+
+    .brand img{
+      width: 80%;
+    }
+    @media (max-width: 786px)
+    {
+    .sidebar {
+      width: 6rem;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 100;
+      cursor: pointer;
+      background: rgb(64, 0, 0);
+      transition: 0.5s;
+      overflow: hidden;
+    }
+
+    .sidebar:hover {
+      width: 22rem;
+    }
+
+    .brand {
+      text-align: center;
+      display: none;
+      font-size: 1.4rem;
+      padding: 1rem 0;
+      color: #ffffff;
+    }
+
+    .brand:hover {
+      background: #5e593100;
+    }
+
+    .brand span {
+      display: none;
+    }
+
+    .nav-list {
+      list-style: none;
+    }
+
+    .nav-item {
+      padding: 1rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-item:hover {
+      background: #ffffff00;
+    }
+
+    .nav-item a {
+      position: relative;
+      white-space: nowrap;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-item__icon {
+      position: relative;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-item__text {
+      position: relative;
+      display: none;
+      font-size: 1em;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .sidebar:hover .brand span {
+      display: inline;
+    }
+
+    .sidebar:hover .brand {
+      display: flex;
+      margin-left: 68px;
+    }
+
+    .sidebar:hover .nav-item {
+      justify-content: start;
+      display: flex;
+    }
+
+    .sidebar:hover .nav-item__text {
+      display: flex;
+      align-items: center;
+    }
+    .sidebar:hover .nav-item-arrow{
+      display: none;
+    }
+    .sidebar .nav-item-arrow{
+      display: contents;
+      margin-top: -900px;
+    }
+  }
+
+  .content{
+    margin-top: 0px; 
+    margin-left: 250px;
+  }
+
+  .top{
+      width: 100%;
+    }
+    .top img{
+      margin-top: 60px;
+    }
+  @media (max-width: 786px)
+    {
+      .content{
+    margin-left: 70px;
+    
+  }
+  .top{
+      width: 100%;
+      height: 10vh;
+    }
+    .top img{
+      margin-top: 10px;
+    }
+    }
+  
+  </style>
+</head>
+
+<body>
+  <!-- notification for small viewports and landscape oriented smartphones -->
+
+  <script>
+    function myFunction() {
+      var input = document.getElementById("Search");
+      var filter = input.value.toLowerCase();
+      var nodes = document.getElementsByClassName('card');
+
+      for (i = 0; i < nodes.length; i++) {
+        if (nodes[i].innerText.toLowerCase().includes(filter)) {
+          nodes[i].style.display = "block";
+        } else {
+          nodes[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+  <div class="sidebar">
+    
+    <div class="brand">
+      <img src="assets/img/LOGOCOUNT.png"></img>
+    </div>
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="#">
+          <span class="nav-item__icon">
+            <ion-icon name="chatbox-outline"></ion-icon>
+          </span>
+          <span class="nav-item__text">
+            GRADE 12 FILMS
+          </span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#11">
+          <span class="nav-item__icon">
+            <ion-icon name="people-outline"></ion-icon>
+          </span>
+          <span class="nav-item__text">
+            GRADE 11 FILMS
+          </span>
+        </a>
+      </li>
+      </li>
+    </ul>
+    <ul class="nav-list">
+      <li class="nav-item-arrow">
+        <i style="color:white; font-size: 30px; margin-top: 0px; display: flex;
+        align-items: center;
+        justify-content: center; margin-left: -20px;" class="fa-solid fa-circle-chevron-right"></i>
+      </li>
+      <li class="nav-item">
+      </li>
+    </ul>
+  </div>
+  
+  <div class="content">
+    <div class="top">
+      <img class="cine" src="assets/img/CINESTEC.png"></img>
+    </div>
+
+    <div class="row" style="margin-top: 50px; margin-left: 80%; max-width: 600px;">
+      <input type="text" id="Search" onkeyup="myFunction()" placeholder="Search Movies..." title="Type in a movie name">
+    </div>
+
+    <ul class="l-main-content main-content" id="myUL">
+      <div class="wrapper">
+        <!----Copy from here----->
+        <div class="card" tag="f3" data-name="Tagu-taguan">
+          <div class="poster"><img src="assets/posters/TAGU-TAGUAN_P.webp" alt="Tagu-taguan"></div>
+          <div class="details">
+            <h1>Tagu-taguan</h1>
+            <h2>2024 • PG • 7min</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+            <div class="tags">
+              <span class="tag">Friendship</span>
+              <span class="tag">Mental Health</span>
+            </div>
+            <p class="desc">
+              Living his life, Kalil once ran across Jake, a childhood acquaintance he hadn't seen in a long
+              time. They enjoyed themselves while reliving their youthful hobbies, but Kalil gradually learned
+              the truth about the state of the world.</p>
+            <div class="one">
+              <a href="https://youtu.be/SBtRscczuek"><button class="round-icon"><i class="fa-solid fa-play"></i> Watch Trailer</button></a>
+            </div>
+          </div>
+        </div>
+        <!----To here to add new card----->
+        <div class="card" tag="f1" tag="f5" tag="f6" data-name="One of Us">
+          <div class="poster"><img src="assets/posters/ONEOFUS_P.webp" alt="One of Us">
+          </div>
+          <div class="details">
+            <h1>One of Us</h1>
+            <h2>2024 • R - 13 • 10min 18sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+            <div class="tags">
+              <span class="tag">Thriller</span>
+              <span class="tag">Drama</span>
+              <span class="tag">Mystery</span>
+            </div>
+            <p class="desc">
+              A group of friends embarks on a camping trip, seeking adventure and camaraderie. Unbeknownst to
+              them, an outcast joins the journey, concealing a chilling secret. As the night unfolds, the
+              shadows cast by friendship and betrayal blur the line between trust and terror. In the darkness,
+              an unsettling revelation awaits, turning a simple camping trip into a fight for survival. Will the
+              bonds of friendship withstand the looming threat, or will the shadows consume them all?</p>
+            <div class="one">
+              <a href="https://youtu.be/Q2hEX7O3Hw0"><button class="round-icon"><i class="fa-solid fa-play"></i> Watch Trailer</button></a>
+            </div>
+          </div>
+        </div>
+        <div class="card" tag="f1" tag="f2" data-name="Pancit">
+          <div class="poster"><img src="assets/posters/PANCIT.webp" alt="Pancit">
+          </div>
+          <div class="details">
+            <h1>Pancit</h1>
+            <h2>2024 • R - 16 • 9min 31sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+            <div class="tags">
+              <span class="tag yellow">Drama</span>
+              <span class="tag">Romance</span>
+            </div>
+            <p class="desc">
+              "Pancit" is a heartwarming film that follows the intertwined lives of two college students, Ali
+              and Leah, by the thread of life -- symbolized by the resilience of pancit. As they navigate the
+              challenges of individual struggles, their love story remains resilient. Despite the hurdles, Ali
+              and Leah persist in their life's journey, they find strength in each other's company. Together,
+              they discover that even in the face of adversity, their unwavering bond serves as a guiding light,
+              savoring them the taste of a promising future that soon awaits.</p>
+            <div class="one">
+              <a href="https://youtu.be/CH5NqhN6Xec"><button class="round-icon"><i class="fa-solid fa-play"></i> Watch Trailer</button></a>
+            </div>
+          </div>
+        </div>
+        <!-------->
+        <div class="card" tag="f1" data-name="Unya Nalang">
+          <div class="poster"><img src="assets/posters/UNYANALANG_P.webp" alt="Unya Nalang">
+          </div>
+          <div class="details">
+            <h1>Unya Nalang</h1>
+            <h2>2024 • PG • 7min</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+            <div class="tags">
+              <span class="tag yellow">Drama</span>
+            </div>
+            <p class="desc">
+              Kuyog sa usa ka suliganong makapalugwa sa kinaadman sa pagsaksi sa kinabuhi sa usa ka tinun-an nga
+              si Mira, usa ka ordinaryong bata nga aduna'y di makatuohang batasan sa pagtapig sa miskan
+              kinagamyang sentimos. Sa matag hagtok sa sinsilyo mao sad ang pagsulod sa mga sugilanong gilabutan
+              sa nga intriga ug misteryo hilabi nas iyang nagamang batasan kalabutan ang kwarta.</p>
+            <div class="one">
+              <a href="https://youtu.be/EuoXc0hk1L0"><button class="round-icon"><i class="fa-solid fa-play"></i> Watch Trailer</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+        <div class="card" tag="f1" data-name="Kasadya">
+          <div class="poster"><img src="assets/posters/KASADYA_P.webp" alt="Kasadya">
+          </div>
+          <div class="details">
+            <h1>Kasadya</h1>
+            <h2>2024 • G • 7min 30sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+            <div class="tags">
+              <span class="tag yellow">Drama</span>
+            </div>
+            <p class="desc">
+              In a challenging urban environment, two siblings, Kuya and Dong, navigate their daily lives by
+              scavenging recyclables. As they traverse the bustling streets and lush forests, their journey
+              unveils the harsh realities of their existence."KASADYA" delves into the inspiring journey of two
+              brothers, navigating obstacles with unwavering determination and portraying the resiliency of the
+              human spirit, emphasizing the beauty that can emerge in the midst of hardships.</p>
+            <div class="one">
+              <a href="https://youtu.be/1uP5xo8jxAM"><button class="round-icon"><i class="fa-solid fa-play"></i> Watch Trailer</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+        <div class="card" tag="f7" tag="f5" tag="f6" data-name="Tell Me">
+          <div class="poster"><img src="assets/posters/TELLME_P.jpg" alt="Tell Me">
+          </div>
+          <div class="details">
+            <h1>Tell Me</h1>
+            <h2>2024 • R - 16 • 7min</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+            <div class="tags">
+              <span class="tag yellow">Mystery</span>
+              <span class="tag">Thriller</span>
+              <span class="tag">Horror</span>
+            </div>
+            <p class="desc">
+              Luke struggles with persistent doubts that lead him into a mental maze in a world where perception
+              and reality collide. His road towards losing his sanity gets captivating as mysterious signals
+              begin to permeate his thoughts. A thrilling journey is promised by the film's gripping story,
+              which also challenges viewers to consider the foundation of Luke's warped reality.</p>
+            <div class="one">
+              <a href="https://youtu.be/zpZ76nnumNY"><button class="round-icon"><i class="fa-solid fa-play"></i> Watch Trailer</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+        <div class="card" tag="f1" tag="f5" tag="f6" data-name="Dumot">
+          <div class="poster"><img src="assets/posters/DUMOT_P.webp" alt="Dumot">
+          </div>
+          <div class="details">
+            <h1>Dumot</h1>
+            <h2>2024 • R - 13 • 8min</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+            <div class="tags">
+              <span class="tag yellow">Drama</span>
+              <span class="tag">Mystery</span>
+              <span class="tag">Thriller</span>
+            </div>
+            <p class="desc">
+              A family is like a house, could be beautiful on the outside but may contain a deep and dark stain
+              inside. Herrera family, known for their success, with the 5 siblings, each with their own dirty
+              linens, sparks a fire between them, the night that changes everything. Finding the culprit of
+              their father's death, doubt and accusations sprayed in the air as each siblings fight to find who
+              is responsible of the murder as one says: "Walay aso na makumkum"</p>
+            <div class="one">
+              <a href="https://youtu.be/E6--xwySE_A"><button class="round-icon"><i class="fa-solid fa-play"></i> Watch Trailer</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+        <div class="card" tag="f1" tag="f8" tag="f9" data-name="Four Friends and a Napkin">
+          <div class="poster"><img src="assets/posters/FRIENDSANDANAPKIN_P.webp" alt="Four Friends and a Napkin">
+          </div>
+          <div class="details">
+            <h1>Four Friends and a Napkin</h1>
+            <h2>2024 • PG • 7min</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+            <div class="tags">
+              <span class="tag yellow">Drama</span>
+              <span class="tag">Fantasy</span>
+              <span class="tag">Comedy</span>
+            </div>
+            <p class="desc">
+              Matag pitik sa orasan, upat ka kinabuhi ang nagahulgang mag bag-o. napuno ug suliran
+              Usa ka napkin ug upat ka maghigala, mahimo kaha nila ang pagsulbad sa maong sitwasyong ilang
+              nakaplagan?
+              Takos ba ang sakripisyong pagabuhaton sa pagluwas sa ilang paghigalaay?
+              Napkin ba gayud ang mahimong solusyon sa ilang kinabuhing puno ug pagmahay?
+
+              Busa atngi sa Four Friends and a Napkin, usa ka pasundayag nga nahimutang sa kahimtang sa usa ka
+              paghigalaay nga napuno ug kasadya, kasakit, ug pagmahay.</p>
+            <div class="one">
+              <a href="https://youtu.be/Mz1fMr4fImI"><button class="round-icon"><i class="fa-solid fa-play"></i> Watch Trailer</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+        <div class="card" tag="f1" tag="f2" tag="f10" data-name="Pause and Wonder">
+          <div class="poster"><img src="assets/posters/P.A.W_P.webp" alt="Pause and Wonder">
+          </div>
+          <div class="details">
+            <h1>Pause and Wonder</h1>
+            <h2>2024 • G • 6min 59sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+            <div class="tags">
+              <span class="tag yellow">Drama</span>
+              <span class="tag">Romance</span>
+              <span class="tag">Family Movie</span>
+            </div>
+            <p class="desc">
+              In the heartwarming 7-minute film, a young girl seeks solace in a park, finding comfort on a
+              bench. Unexpectedly, a vibrant green ball rolls towards her, unlocking a flood of memories about
+              her beloved dog. As she holds the ball, a nostalgic journey unfolds, capturing the tender moments
+              and unbreakable bond she shared with her canine companion. "PAW: Pause And Wonder" is a touching
+              exploration of the enduring connection between humans and their furry friends.</p>
+            <div class="one">
+              <a href="https://youtu.be/VT0VCYkiaR8"><button class="round-icon"><i class="fa-solid fa-play"></i> Watch Trailer</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+        <div class="card" tag="f1" tag="f6" data-name="Inatay">
+          <div class="poster"><img src="assets/posters/INATAY_P.webp" alt="Inatay">
+          </div>
+          <div class="details">
+            <h1>Inatay</h1>
+            <h2>2024 • R - 16 • 7min</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+            <div class="tags">
+              <span class="tag yellow">Drama</span>
+              <span class="tag">Mystery</span>
+            </div>
+            <p class="desc">
+              Beneath the hushed shadows of the night, six siblings share only one condition; don't let Ate
+              Aning know.
+
+              INATAY is a mystery-drama that delves into the sinister depths of family relationships, wherein
+              the line of trust and malevolence is blurred. As the siblings get closer to their awaited day, the
+              film unravels various questions; Why are the siblings acting suspicious?
+              What are they trying to hide?</p>
+            <div class="one">
+              <a href="https://youtu.be/kbveU9EEJ1M"><button class="round-icon"><i class="fa-solid fa-play"></i> Watch Trailer</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+        <div class="card" tag="f1" tag="f2" data-name="Tingin">
+          <div class="poster"><img src="assets/posters/TINGIN_P.webp" alt="Tingin">
+          </div>
+          <div class="details">
+            <h1>Tingin</h1>
+            <h2>2024 • PG • 8min</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+            <div class="tags">
+              <span class="tag yellow">Drama</span>
+              <span class="tag">Romance</span>
+            </div>
+            <p class="desc">
+              "Tingin" is not merely a love story but a powerful commentary on the intersections of love,
+              politics, and social justice. Against the backdrop of a nation in transition, the film delves into
+              the heart of the Philippines' struggle for progress and preservation of its cultural roots. Kahit
+              anong gulo man ng kapaligiran, sa’yo parin ang tingin.</p>
+            <div class="one">
+              <a href="https://youtu.be/0cbdeo_wFIs"><button class="round-icon"><i class="fa-solid fa-play"></i> Watch Trailer</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+        <!------>
+        <div class="card" data-name="HUH?">
+          <div class="poster"><img src="assets/posters/HUH_P.webp" alt="HUH?">
+          </div>
+          <div class="details">
+            <h1>HUH?</h1>
+            <h2>2024 • PG • 11min</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <!--copy from here--->
+              <span class="tag">Mystery</span>
+              <!---to here to add genre--->
+              <span class="tag">Thriller</span>
+              <!----then paste after this—--->
+              <span class="tag">Sci-Fi</span>
+            </div>
+            <p class="desc" style="font-size: 10px;">
+              "HUH? (Previously 'Project P')" is a suspenseful short film that follows the night vlogging
+              experiences of
+              Jelo Pinto, a seemingly ordinary vlogger who encounters a mysterious stalker. The story takes a
+              chilling
+              twist when Jelo faces a scarred version of himself from the future, revealing a disturbing motive
+              linked
+              to time travel. The film explores themes of sacrifice and the unintended consequences of meddling
+              with
+              time. It introduces a haunting loop, suggesting that Jelo survives but is haunted by the traumatic
+              events,
+              leaving viewers questioning the boundaries of reality and the price one pays for tampering with the
+              forces
+              of time..</p>
+            <div class="one">
+              <a href="https://youtu.be/aK8hWkELYOw"><button class="round-icon"><i class="fa-solid fa-play"></i> Watch Trailer</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+        <!------>
+        <div class="card" data-name="KAULAYAW">
+          <div class="poster"><img src="assets/posters/KAULAYAW_P.webp" alt="KAULAYAW">
+          </div>
+          <div class="details">
+            <h1>Kaulayaw</h1>
+            <h2>2024 • PG • 8min 4sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Drama</span>
+              <!--copy from here--->
+              <span class="tag">Slice of life</span>
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              Laughter resounded in their days though there was a storm hidden behind the smiles. At the end it
+              was
+              tears from one that led to sorrow for another as a void replaced where joy thrived. Follow the
+              friendship
+              story of Reese and Elle, where they face highs and lows. To witness how things deteriorated due to
+              pressure from unseen burdens enacted by academic expectations. How will things come to an end?</p>
+            <div class="one">
+              <a href="https://youtu.be/eVzEk7aHNpI"><button class="round-icon"><i class="fa-solid fa-play"></i> Watch Trailer</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!------------------->
+        <div id="11" class="card" data-name="Have You Heard The One About Anamarie Marquez">
+          <div class="poster"><img src="assets/posters/ANAMARIE_P.webp"
+              alt="Have You Heard The One About Anamarie Marquez">
+          </div>
+          <div class="details">
+            <h1>Have You Heard The One About Anamarie Marquez</h1>
+            <h2>2024 • R-13 • 5min 30sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Thriller</span>
+              <!--copy from here--->
+              <span class="tag">Horror</span>
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              Deep within the walls of a certain prestigious school, a legend echoed with the mournful cries of
+              injustice and forgotten secrets. Hazel and her friends Mica and Cella encountered a legend about a
+              girl
+              named Anamarie Marquez, a brilliant student who met a tragic end within the school's very walls.
+              After a
+              series of strange events that happened to Hazel, the girls find themselves drawn into the mystery of
+              Anamarie's demise. Will the girls succeed in unravelling the truth and lying Anamarie's spirit to
+              rest? Or
+              will they become the next victims of her vengeful wrath? But the question is, is it really a legend
+              in the
+              first place?</p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Watch Film</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+        <!------>
+        <div class="card" data-name="Special Section">
+          <div class="poster"><img src="assets/posters/SPECIALSEC_P.webp" alt="Special Section">
+          </div>
+          <div class="details">
+            <h1>Special Section</h1>
+            <h2>2024 • R-16 • 7min 54sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Thriller</span>
+              <!--copy from here--->
+              <span class="tag">Horror</span>
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              In the prestigious Hillston Academy, the revered Special Section conceals a dark truth – it shelters
+              troubled youth seeking redemption. When their trusted teacher abruptly resigns, an ominous chain of
+              events
+              ensues, leading to the mysterious deaths of students one by one. As alliances crumble and trust
+              shatters,
+              the survivors must confront the dual nature of their sanctuary, unmask the malevolent forces at
+              play, and
+              race against time to expose the chilling secrets lurking within Hillston Academy. </p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+        <!------>
+        <div class="card" data-name="Satan Has Already Bought U">
+          <div class="poster"><img src="assets/posters/SATANHASALRDBU_P.webp" alt="Satan Has Already Bought U">
+          </div>
+          <div class="details">
+            <h1>Satan Has Already Bought U</h1>
+            <h2>2024 • R-16 • 7min 56sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Thriller</span>
+              <!--copy from here--->
+              <span class="tag">Crime</span>
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc" style="font-size: 10px;">
+              Franco, a drug dealer, and Cesar, a friend and buyer of Franco's meth. The story kicks off in a
+              shadowy
+              and mysterious locale, with the two friends engaged in conversation amidst whispers of the infamous
+              "Precinto Cinco," a place where the crimes started and ended in a perilous cliff. As the film
+              progresses,
+              these two share stories, but despite their camaraderie, a concealed secret looms, unrevealed and
+              potent
+              enough to potentially rupture their friendship, much like a tower on the brink of collapse.
+              Brace yourself for a suspenseful narrative that explores the intricate layers of friendship, crime,
+              and
+              the untold secrets that can change everything in the blink of an eye. "Satan Has Already Bought U"
+              is a
+              cinematic masterpiece with secrets that keeps you on the edge—unravelling the mysteries within the
+              darkness.
+            </p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+        <!------>
+        <div class="card" data-name="Ug Kon Ang Paglaom Dili Na Mouli">
+          <div class="poster"><img src="assets/posters/UGKONANGPAGLAOMDILINAMOULI_P.webp" alt="Ug Kon Ang Paglaom Dili Na Mouli">
+          </div>
+          <div class="details">
+            <h1>Ug Kon Ang Paglaom Dili Na Mouli</h1>
+            <h2>2024 • PG • 7min</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Drama</span>
+              <!--copy from here---> S
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              From "Ug Kon ang Paglaom Dili na Mouli" by John Gilford Doquila, adapted to a short film, imagine
+              within
+              you a home, where you are the mother, and your hope is your daughter. To uphold such a home is to
+              continue
+              hoping that life holds much more than the mistakes you make along the way. However, in the absence
+              of
+              hope, the walls of that home may echo with the silent whispers of despair, yearning for the return
+              of her
+              comforting presence. What would happen if your hope could not come home to you? Will there still be
+              a home
+              in you without your hope?</p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+
+        <!------>
+        <div class="card" data-name="Echoes of Forgotten Flame">
+          <div class="poster"><img src="assets/posters/ECHOSOFFORGOTTEN_P.webp" alt="Echoes of Forgotten Flame">
+          </div>
+          <div class="details">
+            <h1>Echoes of Forgotten Flame</h1>
+            <h2>2024 • R-16 • 5min</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Romance</span>
+              <!--copy from here--->
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              Embark on the captivating journey of 'Echoes of the Forgotten Flame,' a modern-day reincarnation
+              inspired
+              by 'Alamat ng Mayon.' In the heart of the bustling city, the timeless love of Daragang Magayon and
+              Panganoron is reborn as Ember and Claude, their destinies once again entwined. Yet, shadows of an
+              ancient
+              curse resurface through a jealous second lead, threatening to replay tragic events. Each eruption
+              and calm
+              symbolizes the tempestuous emotions and enduring bond between Ember and Claude, a connection that
+              transcends lifetimes. Will the reincarnated lovers break free from the echoes of their forgotten
+              flame or
+              be consumed anew? Explore the potent force of enduring love in this visually stunning and
+              emotionally
+              charged tale.</p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+        <!------>
+        <div class="card" data-name="12:01">
+          <div class="poster"><img src="assets/posters/12.01_P.webp" alt="12:01">
+          </div>
+          <div class="details">
+            <h1>12:01</h1>
+            <h2>2024 • R-16 • 6min</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Thriller</span>
+              <!--copy from here--->
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              it’s 12:01. it’s midnight. ever wonder what happens when curfew hits? a band of three who aims to
+              spread
+              the truth through their music embark on a rough journey of running and hiding after their car dies
+              down in
+              the middle of midnight. as the band tries to avoid getting caught by the patrolling police, a number
+              of
+              events unfold. will they get caught, or will the band be able to escape the night peacefully? see in
+              12:01, a film adaptation of Russell Molina’s original graphic novel.</p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+        <!------>
+        <div class="card" data-name="Hele ni Inay">
+          <div class="poster"><img src="assets/posters/HELENIINAY_P.webp" alt="Hele ni Inay">
+          </div>
+          <div class="details">
+            <h1>Hele ni Inay</h1>
+            <h2>2024 • R-13 • 5min 00sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Thriller</span>
+              <!--copy from here--->
+              <span class="tag">Tragic</span>
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              A tale of supernatural and a love of a mother that transcends the boundaries of life and death. The
+              story
+              unfolds with the unwavering bond between a mother and a child. However, beneath the surface of this
+              heartwarming story lies a mystery that revolves around the shadow that looms persistently behind the
+              child. Who is it, and why is it so persistent? As the story unfolds, the haunting events from the
+              child's
+              life surface, revealing a truth from the past that the child might be implicated in a mystery he has
+              no
+              idea about. </p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+        <!------>
+        <div class="card" data-name="Alpas">
+          <div class="poster"><img src="assets/posters/ALPAS_P.webp" alt="Alpas">
+          </div>
+          <div class="details">
+            <h1>Alpas</h1>
+            <h2>2024 • PG • 7min 00sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Coming-of-age</span>
+              <!--copy from here--->
+              <span class="tag">Friendship</span>
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              Isabelle Dizon, a perfect, straight-A student, felt an emptiness in her life. She perceived herself
+              conforming to her mother's ideals, sparking doubts about her genuine desires. In the midst of her
+              uncertainty, she encountered a group of individuals from a poorly funded university organization on
+              the
+              brink of dissolution. The group taught her the importance of friendship, the bravery in chasing
+              one's
+              dreams, and the value of seizing the moment to create something extraordinary. </p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+        <!------>
+        <div class="card" data-name="Open Secret">
+          <div class="poster"><img src="assets/posters/OPENSECRET_P.webp" alt="Open Secret">
+          </div>
+          <div class="details">
+            <h1>Open Secret</h1>
+            <h2>2024 • R-13 • 5min 00sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Romance </span>
+              <!--copy from here--->
+              <span class="tag">Thriller</span>
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              Everyone has their fair share of secrets and things that they do not wish for others to know and
+              see. When
+              a boy stumbles upon a lost diary, his innate curiosity leads him to open the book and flip its
+              pages. In
+              doing so, his heart became forfeit to the persona in the diary. Eventually, his focus shifts from
+              the book
+              to the owner itself, gradually developing feelings and falling in love. However, he will have to
+              learn the
+              hard way just how different the truth is from what it seems. Just how much do we really know about
+              the
+              people we love? And even more so, the people that love us? </p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+        <!------>
+        <div class="card" data-name="MARIE">
+          <div class="poster"><img src="assets/posters/MARIE_P.webp" alt="MARIE">
+          </div>
+          <div class="details">
+            <h1>MARIE</h1>
+            <h2>2024 • R-13 • 5min 30sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Romance</span>
+              <!--copy from here--->
+              <span class="tag">Slice-of-Life</span>
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              Step into the magical world of “MARIE,” a short film adaptation of the classic ‘Alamat ng Pag-ibig’
+              by
+              Jeremy Ben P. Panga. In the midst of a challenging life, Marie, an unconventional girl, discovers a
+              mystical necklace that temporarily enhances her appearance. Relying on its enchanting power,
+              especially in
+              matters of the heart, Marie faces a critical turning point when the necklace loses its magic during
+              a
+              pivotal meeting with her boyfriend. As hurtful words give way to reconciliation, the true beauty of
+              the
+              self and her relationship with others emerges, transcending appearances. “MARIE” is a poignant
+              exploration
+              of love’s transformative nature in oneself and the genuine bonds that endure beyond the superficial.
+            </p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+        <!------>
+        <div class="card" data-name="KAKATOK-KATOK">
+          <div class="poster"><img src="assets/posters/UNAV.webp" alt="KAKATOK-KATOK">
+          </div>
+          <div class="details">
+            <h1>KAKATOK-KATOK</h1>
+            <h2>2024 • PG • 5min 00sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Thriller</span>
+              <!--copy from here--->
+
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              In the rich tapestry of Filipino culture, a myriad of beliefs weaves through the society. From the
+              renowned Manananggal and aswang to the lesser-known mambabarang, these tales form a mosaic of
+              folklore.
+              Yet, amidst these well-known entities, there exists an intriguing anomaly—the simple act of
+              knocking.
+              While, in general, a knock typically signifies someone seeking entry. However, within the community
+              of
+              Benok and Katkat, it transforms into a potent symbol of danger. Here, a knock, lack of a visible
+              presence,
+              has evolved into an ominous warning. For those who dare to open the door in response, an unsettling
+              fate
+              awaits—a sudden and inexplicable disappearance.</p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+        <!------>
+        <div class="card" data-name="Moses Moses">
+          <div class="poster"><img src="assets/posters/MOSESMOSES_P.webp" alt="MOSES MOSES">
+          </div>
+          <div class="details">
+            <h1>Moses Moses</h1>
+            <h2>2024 • R-13 • 6min 23sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Thriller</span>
+              <!--copy from here--->
+              <span class="tag">Slice-of-Life</span>
+
+
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              In a small community of middle class families in the Philippines, the Calderon family peacefully
+              lives
+              through the grief of losing their father. Despite the emergence of tragedy, the family felt the
+              emptiness
+              and departure of hope. The bonds of love, initially shattered by an unexpected crime, brought even
+              greater
+              suffering when one of Regina's children was lost in an unforeseen event, amid the events of rash
+              decision-making and revenge.</p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+        <!------>
+        <div class="card" data-name="Paambit">
+          <div class="poster"><img src="assets/posters/PAAMBIT_P.webp" alt="Paambit">
+          </div>
+          <div class="details">
+            <h1>Paambit</h1>
+            <h2>2024 • R-13 • 5min 30sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Romance</span>
+              <!--copy from here--->
+
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              Every human being begins with a blank canvas. However, the soft strokes of the brush with the
+              different
+              colors of the palette create a peculiar art that no man could ever comprehend.
+
+
+
+
+              Just like the young artist Theo Sharpe, his high school sweetheart, Eloise Luna, is his peculiar
+              art. The
+              exquisite love they share may conquer all dilemmas, but love is not all sunshine and rainbows. Could
+              their
+              love withstand the chaotic strokes on the canvas, or would he let her slip away in the name of love?
+            </p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+        <!------>
+        <div class="card" data-name="Bread of Salt">
+          <div class="poster"><img src="assets/posters/BREADOFSALT_P.webp" alt="Bread of Salt">
+          </div>
+          <div class="details">
+            <h1>Bread of Salt</h1>
+            <h2>2024 • PG • 5min 00sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Romance</span>
+              <!--copy from here--->
+
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              The plot revolves around a young boy named Anton as he experiences his first awakening to love and
+              adulthood. Anton falls in love with a girl from a wealthy family named Aida and works hard to
+              impress her
+              by improving his musical abilities. As Anton navigates the complexities of class differences and
+              unrequited love that revolves in the wrong time. The story explores themes of adolescence, social
+              inequality, and the loss of innocence. "The Bread of Salt" is an engrossing exploration of teen age
+              love,
+              youth, and the longing for a love that never lasted. It depicts the reality of young adults who were
+              intended to meet but not to last.</p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+        <!------>
+        <div class="card" data-name="Class Picture: Moriendo Renascor">
+          <div class="poster"><img src="assets/posters/CLASSPICTURE_P.webp" alt="Class Picture: Moriendo Renascor">
+          </div>
+          <div class="details">
+            <h1>Class Picture: Moriendo Renascor</h1>
+            <h2>2024 • R-13 • 5min 26sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Horror</span>
+              <!--copy from here--->
+
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              In the enigmatic halls of Section 4-6, an ordinary school day takes a chilling turn as students
+              become
+              unwitting participants in a sinister game. Each day, a face disappears from the class picture,
+              leaving
+              behind an unsettling void. The unsuspecting students soon find themselves entangled in a web of
+              mystery
+              and fear, grappling with the horrifying realization that one of their own is a puppet in a deadly
+              puppeteer's hands. Brace yourself for a tale of suspense, betrayal, and a startling revelation that
+              will
+              challenge the very fabric of trust as the truth behind the ominous photographs comes to light in a
+              way
+              they never saw coming. Welcome to Section 4-6, where every click of the camera captures more than
+              just
+              memories—it captures the essence of a chilling and inexplicable phenomenon.</p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+
+        <!------>
+        <div class="card" data-name="Ang Huling El Bimbo: Himig ng Alaala">
+          <div class="poster"><img src="assets/posters/HULINGEL_P.webp" alt="Ang Huling El Bimbo: Himig ng Alaala">
+          </div>
+          <div class="details">
+            <h1>Ang Huling El Bimbo: Himig ng Alaala</h1>
+            <h2>2024 • R-13 • 5min 29sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Romance</span>
+              <!--copy from here--->
+
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              A twisted story about the consequences of deceit, unrequited love and betrayal. Aya, a charismatic
+              high
+              school student, finds herself at the center of a complex love triangle that takes a chilling turn as
+              we
+              discover their dark secrets, leading to a suspenseful climax that will leave you questioning the
+              thin line
+              between love and madness.</p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+        <!------>
+        <div class="card" data-name="The Wallet">
+          <div class="poster"><img src="assets/posters/THEWALLET_P.webp" alt="The Wallet">
+          </div>
+          <div class="details">
+            <h1>The Wallet</h1>
+            <h2>2024 • R-13 • 7min 15sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Thriller</span>
+              <!--copy from here--->
+
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              The Wallet is a movie adaptation to the short story "Ang Kalupi" by Benjamin Pascual. An encounter
+              between
+              a young boy and a middle aged woman that ended up in an unexpected event. An afternoon full of
+              twists and
+              turns that will surely get you guessing of where, who and how?</p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+
+
+
+        <!------>
+        <div class="card" data-name="Maria Makiling: Twisted Love">
+          <div class="poster"><img src="assets/posters/MARIAMAKILING_P.webp" alt="Maria Makiling: Twisted Love">
+          </div>
+          <div class="details">
+            <h1>Maria Makiling: Twisted Love</h1>
+            <h2>2024 • PG • 5min 30sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Romance</span>
+              <!--copy from here--->
+              <span class="tag">Drama</span>
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              Waking up in the modern era, Maria Makiling ends up meeting with her past lover's reincarnation
+              Juan, but
+              things get twisted after finding out that Juan's new "acquaintance" is no other than Captain Lara's
+              reincarnation, the one who killed Juan in the past. Will Maria rewrite destiny and rescue Juan, or
+              are
+              they bound to repeat the tragic past once more?
+
+
+            </p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+        <!------>
+        <div class="card" data-name="UPAL-UPAL">
+          <div class="poster"><img src="assets/posters/UPALUPAL_P.webp" alt="Pa">
+          </div>
+          <div class="details">
+            <h1>UPAL-UPAL</h1>
+            <h2>2024 • G • 5min 30sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Fantasy</span>
+              <!--copy from here--->
+              <span class="tag">Mystery</span>
+              <!---to here to add genre--->
+              <span class="tag">History</span>
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              Diego Domingo is a quiet nerd who loves to takes her time studying and indulging in art. She prefers
+              her
+              time alone, away from the crowd and even from her athletic bestfriend, Luis Tolentino. So when Diego
+              agrees to go hangout with Luis and popular ‘it’ girl Sophia Madrigal who has taken a liking to her,
+              Diego
+              only thinks of eating siopaos- or donuts. But in a mysterious turn of events, they find themselves
+              warping
+              through a portal to Upal-Upal and discovering powers they only see in books. With no way home, they
+              turn
+              to a mysterious person for help. There’s no running away from this adventure for Diego, Luis and
+              Sophia.
+              Not in this</p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+        <!------>
+        <div class="card" data-name="Lifetime">
+          <div class="poster"><img src="assets/posters/LIFETIME_P.webp" alt="Pa">
+          </div>
+          <div class="details">
+            <h1>Lifetime</h1>
+            <h2>2024 • PG • 5min 00sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Drama</span>
+              <!--copy from here--->
+              <span class="tag">Romance</span>
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              In a tale of concealed emotions, two lifelong best friends, bound by an unspoken love, hesitate to
+              jeopardize their cherished friendship. As time unfolds, one’s decision to marry someone else becomes
+              a
+              silent burden, with both friends grappling beneath the weight of their hidden affections. When they
+              finally confess their love, it proves to be a bittersweet revelation, as the timing proves
+              tragically
+              late, forcing them to confront the repercussions of unspoken truths and the profound impact of their
+              life-altering choices.</p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+        <!------>
+        <div class="card" data-name="Ang Kulang sa Lamisa">
+          <div class="poster"><img src="assets/posters/ANGKULANGSALAMESA_P.webp" alt="MARIE">
+          </div>
+          <div class="details">
+            <h1>Ang Kulang sa Lamisa</h1>
+            <h2>2024 • R-13 • 5min 30sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Thrillee</span>
+              <!--copy from here--->
+
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              At dusk, Maye starts preparing supper for her daughter, Joana. The once-familiar kitchen now seemed
+              strangely enigmatic. With each chop and stir, she added a peculiar touch to the meal. Little did
+              Joana
+              know, tonight's dinner held more than just ingredients – it harboured a quiet, eerie secret waiting
+              to be
+              uncovered.
+            </p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+
+        <!------>
+        <div class="card" data-name="Tungod sa Takod">
+          <div class="poster"><img src="assets/posters/TUNGODSATAKOD_P.webp" alt="Tungod sa takod">
+          </div>
+          <div class="details">
+            <h1>Tungod sa Takod</h1>
+            <h2>2024 • R-13 • 5min 00sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Thriller</span>
+              <!--copy from here--->
+
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              Gossip and rumours, one of our favorite pastimes. But what if these seemingly mindless words of
+              wisdom
+              endlessly pass mouth to mouths of victims, friends, and even strangers - won't it be long enough
+              until it
+              draws and drips blood? Follow the story of a poet, as she escapes her past and experiences the true
+              horror
+              of LIBAK.</p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+
+        <!------>
+        <div class="card" data-name="Entablado">
+          <div class="poster"><img src="assets/posters/ENTABLADO_P.webp" alt="Entablado">
+          </div>
+          <div class="details">
+            <h1>Entablado</h1>
+            <h2>2024 • R-13 • 5min 00sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Thriller</span>
+              <!--copy from here--->
+
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              An adaptation film depicting the shadow of towering edifices, concealed beneath the veneer of
+              political
+              smiles, lies the sanctuary of misdeeds. A courageous journalist, driven by the quest for truth,
+              unlocks
+              the door to wrongdoing. Little does she know, this act unravels not just the secrets of malfeasance
+              but
+              opens a portal to the realms of darkness. Will you dare to venture into this labyrinthine narrative
+              of
+              misdeeds and falsehood, where every revelation poses new questions and uncertainties?</p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+
+        <!------>
+        <div class="card" data-name="Dead Stars">
+          <div class="poster"><img src="assets/posters/DEADSTARS_P.webp" alt="Dead Stars">
+          </div>
+          <div class="details">
+            <h1>Dead Stars</h1>
+            <h2>2024 • PG • 5min 32sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Drama</span>
+              <!--copy from here--->
+              <span class="tag yellow">Romance</span>
+
+
+
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              Alfred Salazar, losing interest in his fiance, embarks on a quest to seek a passionate and intense
+              love
+              with his new neighbor. What happens when one side of a relationship loses its warmth and enthusiasm?
+              Will
+              the love between Alfred and his fiance withstand the chilling effects of their fading connection, or
+              will
+              Alfred discover a newfound sense of warmth and affection in the arms of his neighbor?</p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+
+
+        <!------>
+        <div class="card" data-name="Hope in U">
+          <div class="poster"><img src="assets/posters/HOPEINYOU_P.webp" alt="Hope in U">
+          </div>
+          <div class="details">
+            <h1>Hope in U</h1>
+            <h2>2024 • G • 4min 34sec</h2>
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span>5/5</span>
+            </div>
+
+
+            <div class="tags">
+              <span class="tag yellow">Coming-of-age</span>
+              <!--copy from here--->
+
+
+              <!---to here to add genre--->
+              <!----then paste after this—--->
+            </div>
+            <p class="desc">
+              Life is hard, even more so when you're alone. An inspiring influencer, a dancer, an introvert, a
+              model
+              student, and a part-timer. Embarking on a journey of friendship and dreams, the hardship and time
+              spent
+              together, all in one. Will they find hope in each other? Or will they stand alone to harbor all the
+              burdens that come with growing</p>
+            <div class="one">
+              <a href="#"><button class="round-icon"><i class="fa-solid fa-play"></i> Coming Soon</button></a>
+            </div>
+          </div>
+        </div>
+        <!------>
+        <!------>
+
+      </div>
+
+      </li>
+    </ul>
+  </div>
+  </div>
+  </main>
+  </div>
+
+  <script src="js/jquery-3.2.1.min.js"></script>
+</body>
+
+</html>
