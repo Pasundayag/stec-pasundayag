@@ -33,7 +33,7 @@
   
           //do something later when date is reached
           if (distance < 0) {
-            location.replace("stecpasundayag.site/main.html")
+            location.replace("stecpasundayag.site/main")
             clearInterval(x);
           }
           //seconds
